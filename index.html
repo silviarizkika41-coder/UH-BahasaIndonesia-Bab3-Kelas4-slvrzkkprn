@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ulangan Harian Bahasa Indonesia Bab 3 – Petualangan Jalan Raya</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef4fa;--card:#fff;--ink:#1d2b38;--mut:#5b6b7b;--line:#d5e0ea;--blue:#1f6fd1;--yel:#ffc933;--red:#d83a2e;--grn:#1f9d62;--okbg:#dff5e9;--nobg:#fde4e1;--road:#2b3a4a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a24;--card:#192633;--ink:#eaf1f7;--mut:#a3b3c2;--line:#2c3e50;--okbg:#14412c;--nobg:#4a2220;--blue:#3f86e6;--red:#ff7a6e}}
+:root[data-theme="dark"]{--bg:#101a24;--card:#192633;--ink:#eaf1f7;--mut:#a3b3c2;--line:#2c3e50;--okbg:#14412c;--nobg:#4a2220;--blue:#3f86e6;--red:#ff7a6e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:600 17px/1.55 Nunito,system-ui,sans-serif}
+#app{max-width:560px;margin:0 auto;padding:14px 14px 40px}
+h1,.btn,.tag,.opt b,label{font-family:"Baloo 2",system-ui,sans-serif}
+h1{font-size:34px;line-height:1.1;text-align:center;margin:18px 0 4px;font-weight:800}
+.sub{text-align:center;margin:0 0 6px;color:var(--mut);font-weight:800}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px 16px;margin:12px 0}
+.card p{margin:4px 0}
+.road{position:relative;height:36px;border-radius:18px;background:var(--road);overflow:hidden}
+.road::before{content:"";position:absolute;left:14px;right:44px;top:16px;border-top:3px dashed #ffffff99}
+.car{position:absolute;top:3px;left:calc((100% - 34px)*var(--p)*.9);font-size:24px;transform:scaleX(-1);animation:drive .7s ease-out}
+.flag{position:absolute;right:8px;top:3px;font-size:22px}
+@keyframes drive{from{left:calc((100% - 34px)*var(--q)*.9)}}
+@media (prefers-reduced-motion:reduce){.car{animation:none}}
+.meta{display:flex;justify-content:space-between;margin:8px 4px 0;font-weight:800;color:var(--mut)}
+.tag{display:inline-block;background:var(--yel);color:#1d2b38;font-weight:800;font-size:14px;line-height:1.5;padding:0 12px;border-radius:99px}
+.q{font-size:19px;line-height:1.55;white-space:pre-line;margin:8px 0 4px!important}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;min-height:56px;margin:10px 0;padding:12px;text-align:left;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--yel);color:#1d2b38;display:grid;place-items:center}
+.opt.ok{border-color:var(--grn);background:var(--okbg)}
+.opt.no{border-color:var(--red);background:var(--nobg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.btn{display:block;width:100%;min-height:54px;margin:12px 0;border:0;border-radius:14px;background:var(--blue);color:#fff;font-weight:800;font-size:19px;cursor:pointer}
+.btn.alt{background:var(--grn)}
+.btn.ghost{background:transparent;color:var(--blue);border:2px solid var(--blue)}
+.fb{margin:10px 0;padding:10px 14px;border-radius:14px;font-weight:800}
+.fb.g{background:var(--okbg)}.fb.r{background:var(--nobg)}
+input,textarea{width:100%;box-sizing:border-box;padding:12px;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:600 18px/1.5 Nunito,system-ui,sans-serif}
+label{font-weight:800;display:block;margin-bottom:6px}
+.hint{color:var(--red);font-weight:800;min-height:1.5em;margin:4px 0}
+.big{text-align:center;font:800 54px/1.1 "Baloo 2",system-ui,sans-serif;margin:0}
+details{margin-top:8px}summary{color:var(--blue);font-weight:800;cursor:pointer}
+.ans{white-space:pre-wrap;background:var(--bg);border-radius:10px;padding:8px 10px}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const $=s=>document.querySelector(s),A=$("#app");
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const MAP='<svg viewBox="0 0 320 245" role="img" aria-label="Denah: Sekolah di barat laut, Masjid di timur laut, Pasar di barat daya, Rumah Dina di tenggara. Jalan Melati membentang barat-timur, Jalan Mawar membentang utara-selatan." style="width:100%;border-radius:12px;display:block;margin-top:10px"><rect width="320" height="245" fill="#cfe9c8"/><rect y="100" width="320" height="30" fill="#5d6b78"/><rect x="145" width="30" height="215" fill="#5d6b78"/><path d="M0 115H145M175 115H320M160 0V100M160 130V215" stroke="#fff" stroke-dasharray="8 6" opacity=".6"/><g font-size="12" font-weight="800" text-anchor="middle" fill="#1d2b38"><rect x="20" y="26" width="105" height="60" rx="8" fill="#ffe08a"/><text x="72" y="61">🏫 Sekolah</text><rect x="195" y="26" width="105" height="60" rx="8" fill="#bfe3ff"/><text x="247" y="61">🕌 Masjid</text><rect x="20" y="144" width="105" height="60" rx="8" fill="#ffc2b8"/><text x="72" y="179">🛒 Pasar</text><rect x="195" y="144" width="105" height="60" rx="8" fill="#d9c8ff"/><text x="247" y="179">🏠 Rumah Dina</text><text x="320" y="0" font-size="0"> </text><text x="232" y="127" font-size="10" fill="#fff">Jalan Melati</text><text transform="translate(173 175) rotate(-90)" font-size="10" fill="#fff">Jalan Mawar</text><text x="160" y="236" font-size="10">U = utara ↑   S = selatan ↓   B = barat ←   T = timur →</text></g></svg>';
+const P=[
+{c:"Rambu lalu lintas",q:"Dito melihat rambu berbentuk segitiga dengan gambar tikungan tajam di dekat sekolahnya. Apa jenis rambu itu dan apa pesannya?",o:["Rambu peringatan: hati-hati, ada tikungan tajam di depan","Rambu larangan: kendaraan dilarang berbelok","Rambu petunjuk: arah menuju tempat tujuan","Rambu perintah: kendaraan harus berhenti"]},
+{c:"Rambu lalu lintas",q:"Paman Budi akan memarkir motornya. Ia melihat rambu bulat merah bergambar huruf P yang dicoret. Apa yang sebaiknya Paman lakukan, dan mengapa?",o:["Mencari tempat parkir lain, karena itu rambu larangan parkir","Tetap parkir di sana, karena itu rambu petunjuk tempat parkir","Parkir sebentar saja, karena itu rambu peringatan","Parkir di sana, karena itu rambu perintah untuk parkir"]},
+{c:"Rambu lalu lintas",q:"Pasangan jenis rambu dan fungsinya yang tepat adalah …",o:["Rambu larangan: melarang pengguna jalan melakukan hal tertentu, misalnya dilarang berhenti","Rambu petunjuk: melarang kendaraan masuk ke jalan","Rambu peringatan: menunjukkan letak rumah sakit","Rambu perintah: memberi tahu bahwa jalan licin"]},
+{c:"Kalimat argumentasi",q:"Perhatikan pilihan berikut! Kalimat yang berisi pendapat beserta alasan yang kuat adalah …",o:["Menurut pendapat saya, kita harus berhenti saat lampu merah karena dapat mencegah tabrakan.","Menurut pendapat saya, lampu merah itu bagus.","Lampu merah berwarna merah dan berbentuk bulat.","Saya tidak suka berhenti di lampu merah."]},
+{c:"Kalimat argumentasi",q:"Lengkapi kalimat argumentasi ini!\n“Menurut pendapat saya, anak-anak sebaiknya menyeberang di zebra cross, …”",o:["karena pengendara lebih mudah melihat dan berhenti untuk anak yang menyeberang.","karena zebra cross berwarna hitam putih.","dan saya senang berjalan kaki.","sehingga ibu membeli es krim."]},
+{c:"Kalimat argumentasi",q:"Dina berkata, “Menurut pendapat saya, anak SD boleh naik motor sendiri karena sudah bisa menjaga keseimbangan.” Tanggapan yang paling masuk akal untuk menolak pendapat Dina adalah …",o:["Menurut pendapat saya, anak SD belum boleh naik motor sendiri karena belum cukup umur dan belum punya SIM sehingga berbahaya.","Dina salah karena Dina anak nakal.","Aku tidak mau bicara dengan Dina.","Motor itu harganya mahal sekali."]},
+{c:"Imbuhan ber-",q:"Rani pergi ke sekolah naik perahu menyeberangi sungai. Kata berimbuhan ber- yang bermakna menggunakan untuk menceritakannya adalah …",o:["berperahu","berbunga","bersaudara","berbicara"]},
+{c:"Imbuhan ber-",q:"Pohon mangga Kakek berbuah lebat. Adi bercita-cita menjadi polisi lalu lintas.\nMakna imbuhan ber- pada kata berbuah dan bercita-cita secara berurutan adalah …",o:["menghasilkan dan mempunyai","mempunyai dan menghasilkan","menggunakan dan menjadi","menyatakan jumlah dan melakukan tindakan"]},
+{c:"Imbuhan ber-",q:"Pasangan kata dan makna imbuhan ber- yang TIDAK tepat adalah …",o:["berdua: melakukan tindakan","bersepeda: menggunakan sepeda","berbunga: menghasilkan bunga","bercita-cita: mempunyai cita-cita"]},
+{c:"Imbuhan ber-",q:"Rani, Sari, dan Maya mengerjakan tugas bersama. Kalimat yang memakai kata ber- bermakna menyatakan jumlah adalah …",o:["Mereka mengerjakan tugas bertiga.","Mereka mengerjakan tugas sambil bernyanyi.","Mereka mengerjakan tugas sambil berbicara.","Mereka mengerjakan tugas sambil bercanda."]},
+{c:"Denah",m:1,q:"Perhatikan denah! Bangunan yang berada di sebelah barat Jalan Mawar dan di sebelah selatan Jalan Melati adalah …",o:["Pasar","Sekolah","Masjid","Rumah Dina"]},
+{c:"Denah",m:1,q:"Kamu berada di depan Sekolah dan ingin pergi ke Masjid. Instruksi lisan yang tepat adalah …",o:["Berjalanlah ke timur menyusuri Jalan Melati, seberangi Jalan Mawar, Masjid ada di sebelah kiri.","Berjalanlah ke barat menyusuri Jalan Melati, seberangi Jalan Mawar, Masjid ada di sebelah kiri.","Berjalanlah ke timur menyusuri Jalan Melati, seberangi Jalan Mawar, Masjid ada di sebelah kanan.","Berjalanlah ke selatan menyusuri Jalan Mawar, Masjid ada di sebelah kiri."]},
+{c:"Denah",m:1,q:"Ibu ingin pergi dari Rumah Dina ke Pasar. Instruksi lisan yang paling jelas dan mudah diikuti adalah …",o:["Dari Rumah Dina berjalan ke barat, seberangi Jalan Mawar, Pasar ada di depanmu.","Jalan saja ke sana, nanti juga kelihatan.","Dari Rumah Dina belok kanan, lalu belok kiri.","Pasar itu dekat Jalan Melati."]},
+{c:"Rute ke sekolah",m:1,q:"Dina berangkat ke sekolah dari rumahnya. Rute yang benar menurut denah adalah …",o:["Dari Rumah Dina ke utara menyusuri Jalan Mawar sampai perempatan, belok kiri ke Jalan Melati, Sekolah ada di sebelah kanan.","Dari Rumah Dina ke utara menyusuri Jalan Mawar sampai perempatan, belok kanan ke Jalan Melati, Sekolah ada di sebelah kiri.","Dari Rumah Dina ke selatan menyusuri Jalan Mawar, belok kiri ke Jalan Melati, Sekolah ada di sebelah kanan.","Dari Rumah Dina ke barat menyusuri Jalan Melati sampai perempatan, belok kiri ke Jalan Mawar, Sekolah ada di sebelah kiri."]},
+{c:"Rute ke sekolah",m:1,q:"Urutkan petunjuk rute dari Pasar ke Sekolah agar tepat dan aman!\n(1) Seberangi Jalan Melati dengan hati-hati.\n(2) Sekolah ada di depanmu.\n(3) Dari Pasar, berjalan ke utara sampai bertemu Jalan Melati.\n(4) Berhenti, lalu lihat kiri dan kanan.",o:["3 – 4 – 1 – 2","4 – 3 – 1 – 2","3 – 1 – 4 – 2","1 – 3 – 4 – 2"]}
+];
+const U=[
+{c:"Rambu lalu lintas",q:"Sebutkan 4 jenis rambu lalu lintas! Pilih satu rambu larangan, lalu jelaskan mengapa pengguna jalan harus mematuhinya!",k:"Rambu petunjuk, rambu peringatan, rambu perintah, dan rambu larangan. Contoh rambu larangan: dilarang parkir, dilarang berhenti, atau dilarang masuk. Harus dipatuhi agar lalu lintas tertib dan semua orang selamat dari kecelakaan."},
+{c:"Kalimat argumentasi",q:"Menurutmu, apakah anak SD perlu belajar rambu lalu lintas? Tulislah kalimat argumentasi yang diawali “Menurut pendapat saya, …” dan sertakan dua alasan!",k:"Contoh: Menurut pendapat saya, anak SD perlu belajar rambu lalu lintas karena dapat berjalan dan menyeberang dengan aman, serta dapat menghindari kecelakaan di jalan. (Ada pendapat dan minimal dua alasan yang masuk akal.)"},
+{c:"Imbuhan ber-",q:"Buatlah satu kalimat dengan kata bersepeda, satu dengan berbunga, dan satu dengan berdua. Lalu jelaskan makna imbuhan ber- pada setiap kata itu!",k:"bersepeda = menggunakan sepeda; berbunga = menghasilkan bunga; berdua = menyatakan jumlah (dua). Contoh kalimat: Kami bersepeda ke taman. Pohon mawar itu berbunga indah. Aku dan Dina pulang berdua."},
+{c:"Instruksi lisan dari denah",m:1,q:"Kamu berada di depan Masjid. Temanmu bertanya cara menuju Pasar. Ucapkan instruksi lisanmu dengan menyebut arah mata angin, nama jalan, dan nama bangunan!",k:"Contoh: Dari Masjid, berjalanlah ke barat menyusuri Jalan Melati sampai perempatan. Belok kiri ke selatan menyusuri Jalan Mawar. Pasar ada di sebelah kanan."},
+{c:"Menulis rute dari denah",m:1,q:"Tulislah rute dari Sekolah menuju Rumah Dina dalam 4 kalimat. Gunakan kata pertama, kemudian, lalu, dan terakhir!",k:"Contoh: Pertama, keluar dari Sekolah menuju Jalan Melati. Kemudian, berjalan ke timur sampai perempatan. Lalu, belok kanan ke selatan menyusuri Jalan Mawar. Terakhir, Rumah Dina ada di sebelah kiri."}
+];
+let S;
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const head=i=>`<div class="road" style="--p:${i/20};--q:${Math.max(i-1,0)/20}"><span class="car">🚗</span><span class="flag">🏁</span></div><p class="meta"><span>${i<15?"Soal "+(i+1)+" dari 15":"Uraian "+(i-14)+" dari 5"}</span><span>${S.st>1?"🔥 "+S.st+" benar beruntun":""}</span></p>`;
+function home(){A.innerHTML=`<div class="road" style="--p:.45;--q:.45"><span class="car">🚗</span><span class="flag">🏁</span></div>
+<h1>Petualangan Jalan Raya 🚦</h1><p class="sub">Ulangan Harian Bahasa Indonesia</p>
+<div class="card"><p>📘 Bab 3 Bahasa Indonesia</p><p>🏫 SDN 1 Karya Sari</p><p>🎓 Kelas 4 SD</p><p>📅 Tahun Pelajaran 2026/2027</p><p>📝 15 soal pilihan ganda dan 5 soal uraian</p></div>
+<div class="card"><b>Cara bermain</b><p>Baca soal dengan teliti. Pilih satu jawaban, lalu lihat apakah jawabanmu benar. Di soal uraian, tulis jawabanmu dengan kalimat lengkap.</p></div>
+<div class="card"><label for="n">Tulis nama lengkapmu</label><input id="n" maxlength="40" autocomplete="off" placeholder="Nama lengkap"><p class="hint" id="h"></p></div>
+<button class="btn" onclick="go()">Mulai Petualangan ▶</button>`}
+function go(){const n=$("#n").value.trim();if(n.length<2){$("#h").textContent="Tulis namamu dulu ya.";return}S={n,i:0,ok:0,st:0,u:[]};show()}
+function show(){window.scrollTo(0,0);S.i<15?pg(S.i):S.i<20?ur(S.i-15):res()}
+function pg(i){const q=P[i];S.cur=shuf(q.o.map((t,k)=>({t,ok:!k})));
+A.innerHTML=head(i)+`<div class="card"><span class="tag">${q.c}</span><p class="q">${q.q}</p>${q.m?MAP:""}</div>`+S.cur.map((o,k)=>`<button class="opt" onclick="pick(${k})"><b>${"ABCD"[k]}</b><span>${o.t}</span></button>`).join("")+`<div id="fb"></div>`}
+function pick(k){const o=S.cur,ok=o[k].ok;if(ok){S.ok++;S.st++}else S.st=0;
+document.querySelectorAll(".opt").forEach((b,j)=>{b.disabled=true;if(o[j].ok)b.classList.add("ok");else if(j==k)b.classList.add("no")});
+const f=$("#fb");f.innerHTML=`<div class="fb ${ok?"g":"r"}">${ok?"Hebat! Jawabanmu benar 🎉":"Belum tepat. Jawaban yang benar ada di kotak hijau."}</div><button class="btn" onclick="S.i++;show()">${S.i<14?"Lanjut ▶":"Ke soal uraian ✍️"}</button>`;f.scrollIntoView({behavior:"smooth",block:"nearest"})}
+function ur(j){const q=U[j];A.innerHTML=head(15+j)+`<div class="card"><span class="tag">${q.c}</span><p class="q">${q.q}</p>${q.m?MAP:""}</div><textarea id="t" rows="6" placeholder="Tulis jawabanmu di sini…">${esc(S.u[j]||"")}</textarea><p class="hint" id="h"></p><button class="btn" onclick="sv(${j})">${j<4?"Simpan dan lanjut ▶":"Selesai dan lihat hasil 🏆"}</button>`}
+function sv(j){const v=$("#t").value.trim();if(v.length<3){$("#h").textContent="Tulis jawabanmu dulu ya.";return}S.u[j]=v;S.i++;show()}
+function res(){const nl=S.ok*4,b=S.ok>=13?3:S.ok>=10?2:1;
+S.t=`Ulangan Harian Bahasa Indonesia Bab 3\nSDN 1 Karya Sari, TP 2026/2027\nNama: ${S.n}\nPilihan ganda benar: ${S.ok} dari 15 (nilai ${nl} dari 60)\n\nJawaban uraian:\n`+U.map((q,j)=>`${j+1}. ${S.u[j]}`).join("\n");
+A.innerHTML=`<div class="card" style="text-align:center"><p style="font-size:44px;margin:0">${"⭐".repeat(b)+"☆".repeat(3-b)}</p><h1 style="margin-top:4px">Selesai, ${esc(S.n)}!</h1><p class="sub">Pilihan ganda benar ${S.ok} dari 15</p><p class="big">${nl}<small style="font-size:22px"> / 60</small></p><p>Nilai uraian (maksimal 40) diberikan oleh guru.</p></div>
+<button class="btn alt" onclick="wa()">Kirim ke WhatsApp guru 📲</button><button class="btn ghost" onclick="cp(S.t)">Salin hasil 📋</button><p class="hint" id="h" style="text-align:center"></p>
+<h2 style="font-family:'Baloo 2',system-ui,sans-serif;margin:18px 0 0">Jawaban uraianmu</h2>`+U.map((q,j)=>`<div class="card"><span class="tag">Uraian ${j+1}</span><p>${q.q}</p><p class="ans">${esc(S.u[j])}</p><details><summary>Lihat contoh jawaban</summary><p>${q.k}</p></details></div>`).join("")+`<button class="btn ghost" onclick="home()">Main lagi 🔁</button>`;window.scrollTo(0,0)}
+function wa(){window.open("https://wa.me/?text="+encodeURIComponent(S.t),"_blank")}
+async function cp(t){const h=$("#h");try{await navigator.clipboard.writeText(t);h.textContent="Hasil tersalin ✅"}catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");h.textContent="Hasil tersalin ✅"}catch(x){h.textContent="Gagal menyalin. Gunakan tombol WhatsApp."}a.remove()}}
+home();
+</script>
+</body>
+</html>
